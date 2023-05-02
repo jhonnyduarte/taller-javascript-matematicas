@@ -48,3 +48,35 @@ function calcularTriangulo(lado1,lado2,base,altura){
 console.log(calcularTriangulo(5,6,4,5.5));
 
 console.groupEnd('triangulo');
+
+
+console.group('circle');
+
+const radioCirculo = 3;
+const diametroCirculo = radioCirculo*2;
+const PI = 3.1415;
+
+const circunferencia = diametroCirculo * PI;
+const areaCirculo = PI * Math.pow(radioCirculo,2);
+
+console.log(
+    {
+        radioCirculo,
+        diametroCirculo,
+        PI,
+        circunferencia,
+        areaCirculo
+    }
+);
+function calcularCirculo(radio){
+    const diametro = radio*2;
+    const radioAlCuadrado = Math.pow(radio,2);
+
+    return{
+        circunferencia: diametro * Math.PI.toFixed(5),
+        area: Math.PI.toFixed(5) * radioAlCuadrado
+    };
+}
+console.log(calcularCirculo(3));
+
+console.groupEnd('circle');
