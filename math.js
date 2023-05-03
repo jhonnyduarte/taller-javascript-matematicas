@@ -57,7 +57,23 @@ function calcularAlturaTriangulo(lado1,base){
 console.log(calcularAlturaTriangulo(6,4));
 console.log(calcularAlturaTriangulo(6,6));
 
+function areaTrianguloEscaleno(lado1,lado2,lado3){
+    if(lado1==lado2 || lado1==lado3 || lado2==lado3){
+        return false;
+    }else{
+        let s = (lado1+lado2+lado3)/2;
+        let area = Math.sqrt(s*(s-lado1)*(s-lado2)*(s-lado3))
+        let h = (2*area)/lado1;
+
+        return h;
+    }
+}
+console.log(areaTrianguloEscaleno(16,8,10));
+console.log(areaTrianguloEscaleno(6,6,6));
+
+
 console.groupEnd('triangulo');
+
 
 
 console.group('circle');
