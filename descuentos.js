@@ -7,6 +7,17 @@ const newResult = document.querySelector('#result');
 
 btn.addEventListener('click',calcularPrecioConDescuento);
 
+const couponList = [];
+
+    couponList.push({
+        name: 'Primera_compra',
+        discount: 30
+    })
+    couponList.push({
+        name: 'Referido',
+        discount: 20
+    })
+
 function calcularPrecioConDescuento(){
 
     const price = Number(inputPrice.value); 
@@ -19,29 +30,14 @@ function calcularPrecioConDescuento(){
     
     let discount;
 
-    switch (coupon) {
-        case 'Primera compra':
-            discount = 30;
-            break;
-        case 'Referido':
-            discount = 20;
-            break;    
-    
-        default:
-            newResult.innerText = 'Este cupon no es valido!!';
-            return;
-            
-    }
+    const couponInArray = couponList.find(couponElement => couponElement.name == coupon);
 
-    // if(coupon=='Primera compra'){
-    //     discount = 30;
-    // }
-    // else if(coupon=='Referido'){
-    //     discount = 20;
-    // }else{
-    //     newResult.innerText = 'Este cupon no es valido!!';
-    //     return 
-    // }
+    if(couponInArray){
+        discount = couponInArray.discount;
+    }else{
+        newResult.innerText = 'Este cupon no es valido!!';
+        return 
+    }
 
     const newPrice = (price*(100-discount))/100;
 
