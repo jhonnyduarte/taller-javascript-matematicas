@@ -43,3 +43,21 @@ function calcularPrecioConDescuento(){
 
     newResult.innerText = 'Precio con descuento: $ ' + newPrice;
 }
+
+const users = [];
+
+users.push({
+    name: 'Juanito Alcachofa',
+    id: 123
+});
+users.push({
+    name: 'Juanita Alcaparra',
+    id: 456
+});
+
+
+function solution (users, id){
+    return users.find(user => user.id===id) ?.name || false;
+    
+}
+console.log(solution(users,123));
