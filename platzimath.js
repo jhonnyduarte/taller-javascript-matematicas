@@ -53,3 +53,56 @@ function ordenarLista(listaDesordenada){
 
     return lista;
 }
+function ordenarListaBidimensional(listaDesordenada,i){
+
+    const lista = listaDesordenada.sort((valorAcumulado,nuevoValor) => valorAcumulado[1]-nuevoValor[1]);
+
+    return lista;
+}
+
+function calculandoModa(lista){
+
+    const listaCount = {};
+
+    for (let i = 0; i < lista.length; i++) {
+        const element = lista[i];
+        
+        if(listaCount[element]){
+            listaCount[element] += 1;
+        }else{
+            listaCount[element] = 1;
+        }
+        
+    }
+
+    const listaArray = Object.entries(listaCount);
+    const listaOrdenada = ordenarListaBidimensional(listaArray,1)
+    const listaMaxNumber = listaOrdenada[listaOrdenada.length-1];
+    console.log(listaCount);
+    console.log(listaOrdenada);
+    console.log(listaMaxNumber);
+    console.log('La moda es: ' + listaMaxNumber[0]);
+    const moda = listaMaxNumber[0];
+    return moda;
+}
+
+
+const obj = {
+    123: 'Juanito Alcachofa',
+    456: 'Juanita Alcaparra',
+}
+
+function solucion (obj){
+    
+    const array = [];
+
+    Object.entries(obj).forEach((element) => {
+        array.push({
+            id: element[0],
+            name: element[1],
+        });
+        
+    })
+    return array
+    
+}
