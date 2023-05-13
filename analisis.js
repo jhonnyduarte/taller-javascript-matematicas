@@ -14,17 +14,17 @@ function encontrarPersona(personaEnBusqueda){
 function medianaPorPersona(nombrePersona){
 
     const trabajos = encontrarPersona(nombrePersona).trabajos;
-    console.log(trabajos);
+    //console.log(trabajos);
     
     const salarios = trabajos.map(function(elemento){
         
         return elemento.salario;
        
     })
-    console.log(salarios);
+    //console.log(salarios);
 
     const medianaSalarios = PlatziMath.calcularMediana(salarios);
-    console.log(medianaSalarios);
+    //console.log(medianaSalarios);
     return medianaSalarios;
 }
 
@@ -130,4 +130,37 @@ function proyeccionEmpresa (nombre){
        return nuevoMediana;
     }
 
+}
+
+
+// Analisis General
+
+function medianaGeneral(){
+
+    const listaMedianas = salarios.map(
+        persona => medianaPorPersona(persona.name)
+    );
+
+    const mediana = PlatziMath.calcularMediana(listaMedianas);
+    return mediana;
+}
+
+function medianaTop10(){
+
+    const listaMedianas = salarios.map(
+        persona => medianaPorPersona(persona.name)
+    );
+
+    const medianasOrdenadas = PlatziMath.ordenarLista(listaMedianas);
+
+    // 10% de la muestra que mas gana,en este ejemplo tenemos
+    // 20 personas osea q el 10% serian 2 personas.
+    // 20/10 = 2 perosnas es el 10% de 20
+    const cantidad = listaMedianas.length / 10;
+    const limite = listaMedianas.length - cantidad;
+
+    const top10 = medianasOrdenadas.slice(limite,medianasOrdenadas.length);
+
+
+    console.log(top10);
 }
